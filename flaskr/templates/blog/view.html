@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Viewing "{{ post[2] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+    <article class="book">
+      <header>
+        <div>
+          <h1>{{ post[2] }}</h1>
+          <div class="about">by {{ post[3] }} in {{ post[4] }}</div>
+        </div>
+      </header>
+      <p class="body">A brief description of {{ post[2] }} by {{ post[3] }} ISBN {{ post[1] }} </p>
+    </article>
+    </div>
+      {% if goodreadsAPI %}
+      <div>
+        <h1>Here are the Goodreads.com Reviews for {{ post[2] }}</h1>
+        <table>
+          <tr>
+            <th>Number of Ratings</th>
+            <th>Number of Reviews</th>
+            <th>Average Rating</th>
+          </tr>
+
+          <tr>
+            <td>{{ goodreadsAPI["books"][0]["ratings_count"] }}</td>
+            <td>{{ goodreadsAPI["books"][0]["reviews_count"] }}</td>
+            <td>{{ goodreadsAPI["books"][0]["average_rating"] }}</td>
+          </tr>
+        </table>
+      </div>
+      {% endif %}
+      <br>
+      {% if show_reviews %}
+      <div>
+        <h1>Here's what other users on this site are saying about {{ post[2] }}</h1>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Review score</th>
+          <th>Summary</th>
+        </tr>
+
+      {% for review in show_reviews %}
+      <tr>
+        <td>{{ review[1] }}</td>
+        <td>{{ review[2] }}</td>
+        <td>{{ review[3] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+    {% endif %}
+
+    <div>
+      <h1>Review:{{ post[2] }}</h1>
+
+      <form method="post">
+        <fieldset>
+        <legend>Submit a review</legend>
+        <label for="review">Review</label>
+        <select name="review" id="review" required>
+            <option value=1>1 star</option>
+            <option value=2>2 stars</option>
+            <option value=3>3 stars</option>
+            <option value=4>4 stars</option>
+            <option value=5>5 stars</option>
+        </select>
+        <br>
+        <br>
+        <textarea name="review_text" id = "review_text" rows="2" cols="50" maxlength = "450" placeholder="Please describe your review here..." required></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Submit Review">
+        </fieldset>
+      </form>
+    </div>
+{% endblock %}
