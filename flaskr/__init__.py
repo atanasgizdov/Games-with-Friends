@@ -30,6 +30,7 @@ def create_app(test_config=None):
     app.register_blueprint(picolo.bp)
     app.add_url_rule('/', endpoint='index')
 
-    return app
+    from . import hotseat
+    app.register_blueprint(hotseat.bp)
 
-    
+    return app
