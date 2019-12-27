@@ -24,14 +24,14 @@ the player who lives the farthest from here can give out 3 sips,question ,f,Brad
 "if you've had sex in water, drink 2 sips",question ,f,Brady,0,0
 "if you would make out with the person to your left, give out 2 sips",question ,f,Ariel,0,0
 "If you've gone more than 3 days without taking a shower, drink 2 sips",question ,f,Ariel,0,0
-Who would you rather kiss? Whoever you choose gives out 5 drinks,choice,f,Ariel,0,0
-Who's toe would you rather suck? That person takes 2 sips,choice,f,Ariel,0,0
-Who is more likely to have road rage? That person gives out 2 sips,choice,f,Ariel,0,0
-Who is more likely to have a threesome? That person drinks 3 times,choice,f,Ariel,0,0
-Who would you rather take to prom? Your prom date drinks 2 sips,choice,f,Ariel,0,0
+Who would you rather kiss? Whoever you choose gives out 5 drinks,choose_two,f,Ariel,0,0
+Who's toe would you rather suck? That person takes 2 sips,choose_two,f,Ariel,0,0
+Who is more likely to have road rage? That person gives out 2 sips,choose_two,f,Ariel,0,0
+Who is more likely to have a threesome? That person drinks 3 times,choose_two,f,Ariel,0,0
+Who would you rather take to prom? Your prom date drinks 2 sips,choose_two,f,Ariel,0,0
 "You can no longer address people by their first names, the first person to use a first name drinks 5 times",virus,f,Ariel,0,0
 Drink twice if you've ever puked at saco,question,t,Ariel,0,0
-Who is more likely to black out? They give out 2 sips,choice,t,Ariel,0,0
+Who is more likely to black out? They give out 2 sips,choose_two,t,Ariel,0,0
 Can you walk on the sun? Yes or No? Losers drink 3 sips,question,t,Ariel,0,0
 Would you rather have no one attend your wedding or funeral? Losing group drinks 3 times,would_you_rather,f,Brady,0,0
 Drink 2 times if you've ever had sex at work,question,f,Brady,0,0
@@ -41,12 +41,12 @@ Would You Rather Use Eye Drops Made Of Vinegar Or Toilet Paper Made From Sandpap
 "The person with the strongest drink, take 3 sips",question,f,Brady,0,0
 "The last person that got up, gives 2 drinks",question,f,Brady,0,0
 Would You Rather Eat The Same Meal For The Rest Of Your Life Or Never Use Instagram Again?,would_you_rather,f,Brady,0,0
-Who would you rather go on a road trip with? They can give out 2 sips,choice,f,Brady,0,0
+Who would you rather go on a road trip with? They can give out 2 sips,choose_two,f,Brady,0,0
 3 sips to the last person who opened a drink,question,f,Brady,0,0
 Would You Rather Be Able To Stop Time Or Fly?,would_you_rather,f,Brady,0,0
 "If you've ever had a one night stand, drink 2 sips",question,f,Brady,0,0
-Who is most likely to get lost on a night out?  That person drinks 2 sips,choice,f,Ariel,0,0
-Who would you rather give a lap dance to? They get to drink 2 sips,choice,f,Ariel,0,0
+Who is most likely to get lost on a night out?  That person drinks 2 sips,choose_two,f,Ariel,0,0
+Who would you rather give a lap dance to? They get to drink 2 sips,choose_two,f,Ariel,0,0
 Would You Rather Go A Month Without Internet Or Go A Month Without Bathing?,would_you_rather,f,Ariel,0,0
 The last person to raise their hand drinks 2 sips,question,f,Ariel,0,0
 The first person to do a pushup gives out 10 sips,question,f,Ariel,0,0
@@ -73,3 +73,33 @@ Would You Rather Drink All Your Food From A Baby Bottle Or Wear Visible Diapers 
 "If you were slightly turned on by Mike's dips at New Years, drink 2 sips",question,t,Nasko,0,0
 "If you were present for the Riklin New Year's incident, drink 3 sips",question,t,Nasko,0,0
 "If you've been kicked out of a bar for puking, drink 5 sips",question,t,Nasko,0,0
+Go around the room doing a gesture and repeating the gestures done so far. First to mess up drinks 4 times,categories,f,Brady,0,0
+"If they were to open a restaurant, whose restaurant would be better? Winner gives out 3 drinks",choose_two,f,Brady,0,0
+"Read out loud the first thing that pops up when you type ""how does"" on these two people's phone google search. Choose the winner. That person gets to give out 5 drinks",choose_two,t,Brady,0,0
+"Go around the room and name famous authors. The person who can't, drinks 1 sip",categories,t,Brady,0,0
+Where is the craziest place you've had sex? Answer or drink 5 sips,choose_one,t,Brady,0,0
+"Go around the room and name characters from harry potter. The person who can't, drinks 1 sip",categories,t,Brady,0,0
+"Go around the room and name video games. The person who can't, drinks 1 sip",categories,t,Brady,0,0
+What is the biggest lie you've ever told? Answer or finish your drink,choose_one,t,Brady,0,0
+"Go around the room and name streaming platforms. The person who can't, drinks 1 sip",categories,t,Brady,0,0
+Lick the persons toe to your left or finish your drink,choose_one,t,Brady,0,0
+"Go around the room and name american presidents. The person who can't, drinks 1 sip",categories,t,Brady,0,0
+"Water break, everyone take a few sips (even you, deanna)",filler,t,Brady,0,0
+"If there are any viruses in play, they are lifted",filler,t,Brady,0,0
+Hard pass. Next.,filler,t,Brady,0,0
+Go outside and dance like a cowboy for 10 seconds or take 5 sips,choose_one,t,Brady,0,0
+"You have to hold hands with the person to your right for one whole turn. If either of you let go, you both finish your drink",filler ,t,Brady,0,0
+"If dee has put a finger in your butt, drink 3 sips. And also drink 5 sips if you are dee",question,t,Brady,0,0
+"Go around the room and name types of dogs. The person who can't, drinks 1 sip",categories,t,Brady,0,0
+Let the person to your right go through for phone for one minute or finish your drink,choose_one,t,Brady,0,0
+Let each person in the circle smack your ass or drink 5 sips,choose_one,t,Brady,0,0
+"If you haven't had any water this round, drink some",filler,t,Brady,0,0
+Say something nice about the person to your right,filler,t,Brady,0,0
+Give a compliment to the person on your left,filler,t,Brady,0,0
+Beer bitch. Go refresh anyones drink who needs it.,filler,t,Brady,0,0
+Explain how a bill becomes a law or drink 2 sips,choose_one,t,Brady,0,0
+"If you couldn't guess puddle, drink 2 sips",filler,t,Brady,0,0
+"If you are with child, give out 5 sips",filler,t,Brady,0,0
+"Take a lap, touch the fridge and come back",filler,t,Brady,0,0
+The oldest person in the room give out 2 sips,filler ,t,Brady,0,0
+The last person to arrive at the party give out 3 sips,filler,t,Brady,0,0

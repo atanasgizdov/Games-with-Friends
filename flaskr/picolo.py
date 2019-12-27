@@ -123,6 +123,10 @@ def play_game():
         return render_template('picolo/game_over.html', payload=payload)
 
 
+    if type_of_prompt == "choose_one" or type_of_prompt == "choose_two":
+        return render_template('picolo/play_game_card.html', payload=payload)
+
+
     return render_template('picolo/play_game_card.html', payload=payload)
 
     # grab all results from the DB
