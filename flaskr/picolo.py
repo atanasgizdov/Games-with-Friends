@@ -120,7 +120,7 @@ def play_game():
 
     if not prompts:
         game_running = False
-        return render_template('picolo/game_over.html', payload=payload)
+        return render_template('picolo/game_over.html')
 
 
     if type_of_prompt == "choose_one" or type_of_prompt == "choose_two":
