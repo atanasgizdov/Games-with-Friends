@@ -18,43 +18,39 @@
 
     <main role="main" class="inner cover">
       <h1 class="cover-heading">Add you own custom prompts</h1>
-      <br>
+      {% if success is defined %}
+      <h6 class="cover-heading" style="color: #9fe060;"> Your prompt was successfully saved!</h6>
+      {% endif %}
+
       <br>
 
-      <p class="lead">
-        <form>
+        <form method="post">
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-lg-6" lead>
               <label for="summary">Enter your prompt</label>
-              <input type="text" class="form-control" id="summary" placeholder="Prompt" required>
-            </div>
-
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Author</label>
-              <input type="text" class="form-control" id="author" placeholder="Enter your name (or alias)">
+              <input type="text" name="summary" class="form-control" id="summary" placeholder="Prompt" required maxlength="512">
             </div>
           </div>
-          <div class="form-group col-md-4">
+            <div class="form-group col-lg-6">
+              <label for="author">Author</label>
+              <input type="text" name="author" class="form-control" id="author" placeholder="Enter your name (or alias)" required maxlength="100">
+            </div>
+
+          <div class="form-group col-lg-2">
             <label for="inputState">Type of question</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
+            <select id="category" name="category" class="form-control" required>
+              <option value='' selected disabled hidden>Choose...</option>
+              <option value='question'>General prompt</option>
+              <option value='choose_one'>Direct single person prompt</option>
+              <option value='choose_two'>Choose between 2 people</option>
+              <option value='categories'>Categories</option>
+              <option value='would_you_rather'>Would you Rather?</option>
+              <option value='filler'>Non-drinking prompts</option>
             </select>
           </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       <br>
-      <div id="start_button">
-      <a href="play" class="btn btn-lg btn-secondary">Submit</a>
-      </div>
 
     </main>
 

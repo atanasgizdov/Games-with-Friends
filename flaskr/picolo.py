@@ -28,8 +28,39 @@ def add_players():
 
     return render_template('picolo/add_players.html')
 
-@bp.route('/custom_prompt')
+@bp.route('/custom_prompt', methods=('GET', 'POST'))
 def custom_prompt():
+    #grab passed values from POST
+    if request.method == 'POST':
+        summary = request.form['summary']
+        author = request.form['author']
+        category = request.form['category']
+
+        print(summary)
+        print(author)
+        print(category)
+
+        #connect to DB
+        conn = connect()
+        cur = conn.cursor()
+        error = None
+
+        #validate UN and PW were entered or and user isn't already registered
+        if not summary:
+            error = 'Username is required'
+        elif not author:
+            error = 'Password is required'
+        elif not category:
+            error = 'Category is required'
+
+        # if passed above checks, register user and redirect to login page
+        if error is None:
+            cur.execute("INSERT INTO prompts (summary, category, custom, author) VALUES (%s, %s, %s, %s)", (summary, category, True, author))
+            conn.commit()
+            success=True
+            return render_template('picolo/add_prompts.html', success=success)
+
+        flash(error)
 
     return render_template('picolo/add_prompts.html')
 

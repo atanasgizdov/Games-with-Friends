@@ -15,7 +15,7 @@ def import_prompts():
         cur = conn.cursor()
 
         #create books table if it doesn't exists
-        sql = 'CREATE TABLE IF NOT EXISTS prompts (id SERIAL PRIMARY KEY, summary varchar (2000), category varchar(200), custom boolean, author varchar(200), upvotes int, downvotes int)'
+        sql = 'CREATE TABLE IF NOT EXISTS prompts (id SERIAL PRIMARY KEY, summary varchar (2000), category varchar(200), custom boolean, author varchar(200), upvotes int default 0, downvotes int default 0)'
         cur.execute(sql)
 
         with open ('picoloprompts.csv', 'r') as file:
