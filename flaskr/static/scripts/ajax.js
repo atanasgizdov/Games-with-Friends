@@ -19,9 +19,6 @@
 					trigger = trigger.trim(); // remove any spaces around the text
 					player_name = player_name.replace(/\s/g,""); // remove any spaces around the text
 
-				console.log(trigger)
-				console.log(player_name);
-
 					$.ajax({
 						url: "add_remove_players", //URL called to Python Flask app
 						data: {trigger: trigger, player_name: player_name}, //search values

@@ -6,48 +6,40 @@
 				//outside of the function above, we want to dynamically check for provide_players_list
 				//every time the user lands on the page. this is done on window load
 				//this avoids the issue of restarting a game with an existing list but not showing it
-				function sound_check() {
-					var audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
-					audio.loop = true
+				var audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
+
+				function play_audio() {
 					audio.play()
 				}
 
-				function play_audio(audio) {
-					audio.play()
-				}
+					function start_hotseat(){
+						//show loading_spinner
+						$("#loading_spinner").show()
+						//hide buttons
+						$("#hotseat_prompt").hide()
+						$("#start_button").hide()
 
+						$.ajax({
+							url: "get_hotseat_prompts", //URL called to Python Flask app
+							data: {}, //search values
+							dataType: "json",
+							success: function(data){
 
-				function check_for_players(){
-					$.ajax({
-						url: "players_list", //URL called to Python Flask app
-						data: {}, //search values
-						dataType: "json",
-						success: function(data){
+								console.log(data)
 
-							console.log(data)
-							var res = "";
-							var start_button = "";
-
-							if (data.results === undefined || data.results == 0){
-								$("#players_list").html("");
-							}
-							else {
-							// create the html with results
-							for(player in data.results){ // JSON result example: {"results": [[516, "0743290119", "Lauren Weisberger", "Chasing Harry Winston"]]} where results are book id, ISBN, Author and Book Title
-								res += "<button type=\"button\" class=\"btn btn-info\" value =" + data.results[player]+ " onclick=\"add_remove_players(\'remove_player\', this)\" style=\"border:1px solid; border-color:black\">"+data.results[player]+"</button>";
-							} // above logic constructs results with JSON data, as well as contructing a "View" link, via book id, to the book's page
-
-							$("#players_list").html(res); // build each result into the html in a list to the corresnding results element in index.html
-
-							if (data.results.length > 1){
-								start_button = "<a href=\"play\" class=\"btn btn-lg btn-secondary\">Start Game</a>"
-								$("#start_button").html(start_button);
+								if (data.results === undefined || data.results == 0){
+									$("#loading_spinner").hide()
+									$("#hotseat_prompt").text("The DB didn't find any prompts - please try again")
+									$("#hotseat_prompt").show()
 								}
-							else {
-								start_button = ""
-								$("#start_button").html(start_button);
+								else {
+								// create the html with results
+									$("#loading_spinner").hide()
+									$("#hotseat_prompt").text(data.results[0])
+									$("#hotseat_prompt").show()
+									$("#next_button").show()
+									setInterval(function(){ play_audio(); }, 2000);
+									}
 								}
-							}
-						}
-					});
-				}
+						});
+					}

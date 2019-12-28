@@ -55,11 +55,14 @@ def custom_prompt():
 
         # if passed above checks, register user and redirect to login page
         if error is None:
-            cur.execute("INSERT INTO prompts (summary, category, custom, author) VALUES (%s, %s, %s, %s)", (summary, category, True, author))
-            conn.commit()
-            success=True
-            return render_template('picolo/add_prompts.html', success=success)
-
+            try:
+                cur.execute("INSERT INTO picolo_prompts (summary, category, custom, author) VALUES (%s, %s, %s, %s)", (summary, category, True, author))
+                conn.commit()
+                success=True
+                return render_template('picolo/add_prompts.html', success=success)
+            except (Exception, psycopg2.DatabaseError) as error:
+                flash (error)
+                return render_template('404.html')
         flash(error)
 
     return render_template('picolo/add_prompts.html')
@@ -98,9 +101,10 @@ def play_game():
             conn = connect()
             cur = conn.cursor()
 
-            cur.execute('select * from prompts')
+            cur.execute('select * from picolo_prompts')
 
             prompts = cur.fetchmany(50)
+            print(prompts)
             random.shuffle(prompts)
          # close the communication with the PostgreSQL
             cur.close()

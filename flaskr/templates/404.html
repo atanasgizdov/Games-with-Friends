@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}404 - Oops!{% endblock %}</h1>
+<header class="masthead mb-auto">
+  <h2> 404 :() </h2>
+  <a href= "{{ url_for('index') }}" class="btn btn-sm btn-dark">Go back to the main menu</a>
+</header>
 {% endblock %}
 
 {% block content %}
-  <h1> This is the error page - sorry! </h1>
+<main role="main" class="inner cover">
+  <h1 class="cover-heading" id ='hotseat_prompt'>This is the error page - Sorry some thing went wrong</h1>
+  <br>
+</main>
 {% endblock %}
