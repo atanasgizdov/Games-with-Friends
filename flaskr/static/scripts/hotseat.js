@@ -6,6 +6,17 @@
 				//outside of the function above, we want to dynamically check for provide_players_list
 				//every time the user lands on the page. this is done on window load
 				//this avoids the issue of restarting a game with an existing list but not showing it
+				function sound_check() {
+					var audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
+					audio.loop = true
+					audio.play()
+				}
+
+				function play_audio(audio) {
+					audio.play()
+				}
+
+
 				function check_for_players(){
 					$.ajax({
 						url: "players_list", //URL called to Python Flask app
