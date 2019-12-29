@@ -22,7 +22,6 @@
 				function stop_audio() {
 					audio.loop = false
 					end_audio.play()
-					audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
 				}
 
 				function next_prompt(){
