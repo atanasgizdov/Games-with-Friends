@@ -20,13 +20,13 @@
 
     <main role="main" class="inner cover">
       {% if payload['player'] %}
-      <h1 class="cover-heading">{{ payload['player'] }}!</h1>
+      <h3 class="cover-heading">{{ payload['player'] }}!</h3>
       {% endif %}
 
       <h1 class="cover-heading">{{ payload['summary'] }}</h1>
 
       {% if payload['player1'] and payload['player2'] %}
-      <h1 class="cover-heading">{{ payload['player1'] }} or {{ payload['player2'] }} </h1>
+      <h3 class="cover-heading">{{ payload['player1'] }} or {{ payload['player2'] }} </h3>
       {% endif %}
       <br>
       <h6>From the twisted mind of {{ payload['author']}}</h6>

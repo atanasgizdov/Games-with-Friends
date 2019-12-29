@@ -39,3 +39,42 @@ def get_hotseat_prompts():
     print (json_string)
 
     return json_string
+
+@bp.route('/custom_prompt_hotseat', methods=('GET', 'POST'))
+def custom_prompt_hotseat():
+    #grab passed values from POST
+    if request.method == 'POST':
+        summary = request.form['summary']
+        author = request.form['author']
+        category = request.form['category']
+
+        print(summary)
+        print(author)
+        print(category)
+
+        #connect to DB
+        conn = connect()
+        cur = conn.cursor()
+        error = None
+
+        #validate UN and PW were entered or and user isn't already registered
+        if not summary:
+            error = 'Username is required'
+        elif not author:
+            error = 'Password is required'
+        elif not category:
+            error = 'Category is required'
+
+        # if passed above checks, register user and redirect to login page
+        if error is None:
+            try:
+                cur.execute("INSERT INTO hotseat_prompts (summary, category, custom, author) VALUES (%s, %s, %s, %s)", (summary, category, True, author))
+                conn.commit()
+                success=True
+                return render_template('hotseat/add_prompts.html', success=success)
+            except (Exception, psycopg2.DatabaseError) as error:
+                flash (error)
+                return render_template('404.html')
+        flash(error)
+
+    return render_template('hotseat/add_prompts.html')

@@ -16,38 +16,40 @@
 				if (trigger == "remove_player")
 					player_name = player_name.value
 				else
-					trigger = trigger.trim(); // remove any spaces around the text
-					player_name = player_name.replace(/\s/g,""); // remove any spaces around the text
 
-					$.ajax({
-						url: "add_remove_players", //URL called to Python Flask app
-						data: {trigger: trigger, player_name: player_name}, //search values
-						dataType: "json",
-						success: function(data){
-							var res = "";
-							var start_button = "";
+						//trigger = trigger.trim(); // remove any spaces around the text
+						player_name = player_name.replace(/\s/g,""); // remove any spaces around the text
 
-							//set the text field back to empty so the next player can be entered
-							document.getElementById('player_name').value = null
-							//re-focus cursor on input
-							document.getElementById('player_name').focus()
-							// create the html with results
-							for(player in data.results){ // JSON result example: {"results": [[516, "0743290119", "Lauren Weisberger", "Chasing Harry Winston"]]} where results are book id, ISBN, Author and Book Title
-								res += "<button type=\"button\" class=\"btn btn-info\" value =" + data.results[player]+ " onclick=\"add_remove_players(\'remove_player\', this)\" style=\"border:1px solid; border-color:black\">"+data.results[player]+"</button>";
-							} // above logic constructs results with JSON data, as well as contructing a "View" link, via book id, to the book's page
+						$.ajax({
+							url: "add_remove_players", //URL called to Python Flask app
+							data: {trigger: trigger, player_name: player_name}, //search values
+							dataType: "json",
+							success: function(data){
+								var res = "";
+								var start_button = "";
 
-							$("#players_list").html(res); // build each result into the html in a list to the corresnding results element in index.html
+								//set the text field back to empty so the next player can be entered
+								document.getElementById('player_name').value = null
+								//re-focus cursor on input
+								document.getElementById('player_name').focus()
+								// create the html with results
+								for(player in data.results){ // JSON result example: {"results": [[516, "0743290119", "Lauren Weisberger", "Chasing Harry Winston"]]} where results are book id, ISBN, Author and Book Title
+									res += "<button type=\"button\" class=\"btn btn-info\" value =" + data.results[player]+ " onclick=\"add_remove_players(\'remove_player\', this)\" style=\"border:1px solid; border-color:black\">"+data.results[player]+"</button>";
+								} // above logic constructs results with JSON data, as well as contructing a "View" link, via book id, to the book's page
 
-							if (data.results.length > 1){
-								start_button = "<a href=\"play\" class=\"btn btn-lg btn-secondary\">Start Game</a>"
-								$("#start_button").html(start_button);
+								$("#players_list").html(res); // build each result into the html in a list to the corresnding results element in index.html
+
+								if (data.results.length > 2){
+									start_button = "<a href=\"play\" class=\"btn btn-lg btn-secondary\">Start Game</a>"
+									$("#start_button").html(start_button);
+									}
+								else {
+									start_button = ""
+									$("#start_button").html(start_button);
 								}
-							else {
-								start_button = ""
-								$("#start_button").html(start_button);
 							}
-						}
-					});
+						});
+
 				}
 
 				//outside of the function above, we want to dynamically check for provide_players_list
@@ -75,7 +77,7 @@
 
 							$("#players_list").html(res); // build each result into the html in a list to the corresnding results element in index.html
 
-							if (data.results.length > 1){
+							if (data.results.length > 2){
 								start_button = "<a href=\"play\" class=\"btn btn-lg btn-secondary\">Start Game</a>"
 								$("#start_button").html(start_button);
 								}

@@ -28,7 +28,12 @@ def add_players():
 
     return render_template('picolo/add_players.html')
 
-@bp.route('/custom_prompt', methods=('GET', 'POST'))
+@bp.route('/custom_prompts')
+def custom_prompt_general():
+
+    return render_template('custom_prompts.html')
+
+@bp.route('/custom_prompt_picolo', methods=('GET', 'POST'))
 def custom_prompt():
     #grab passed values from POST
     if request.method == 'POST':
@@ -71,7 +76,7 @@ def custom_prompt():
 @bp.route('/add_remove_players')
 def add_remove_players():
 
-    if request.args['trigger'] == 'add_player': # get the text to search for
+    if request.args['trigger'] == 'add_player' and request.args['player_name']: # get the text to search for
         players_list.append(request.args['player_name'])
     if request.args['trigger'] == 'remove_player':
         players_list.remove(request.args['player_name'])
@@ -104,7 +109,6 @@ def play_game():
             cur.execute('select * from picolo_prompts')
 
             prompts = cur.fetchmany(50)
-            print(prompts)
             random.shuffle(prompts)
          # close the communication with the PostgreSQL
             cur.close()
@@ -124,12 +128,13 @@ def play_game():
     if type_of_prompt == "choose_two":
 
         #grab 2 random unique values from player list
-        selected_players_choice = random.sample(players_list, 2)
+        selected_players_choice = random.sample(players_list, 3)
         print(selected_players_choice)
 
         payload = {
-            "player1": selected_players_choice[0],
-            "player2": selected_players_choice[1],
+            "player": selected_players_choice[0],
+            "player1": selected_players_choice[1],
+            "player2": selected_players_choice[2],
             "summary": current_prompt[1],
             "author": current_prompt[4]
         }
@@ -163,18 +168,6 @@ def play_game():
 
 
     return render_template('picolo/play_game_card.html', payload=payload)
-
-    # grab all results from the DB
-    # prompt # ID
-    # Body
-    # sub-heading
-    # type (virus, CaH, Would you rather, etc)
-    # Custom (made by a player)
-    # number of players required to be chosen (1-2?)
-    # author
-    # number of drinks to take for this
-    # upvotes
-    # downvotes
 
 #@bp.route('/vote')
 #def vote():
