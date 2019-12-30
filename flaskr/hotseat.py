@@ -27,7 +27,7 @@ def get_hotseat_prompts():
 
         cur.execute('select summary from hotseat_prompts')
 
-        hotseat_prompts = cur.fetchmany(50)
+        hotseat_prompts = cur.fetchall()
         random.shuffle(hotseat_prompts)
      # close the communication with the PostgreSQL
         cur.close()

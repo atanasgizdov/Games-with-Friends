@@ -108,7 +108,7 @@ def play_game():
 
             cur.execute('select * from picolo_prompts')
 
-            prompts = cur.fetchmany(50)
+            prompts = cur.fetchall()
             random.shuffle(prompts)
          # close the communication with the PostgreSQL
             cur.close()
